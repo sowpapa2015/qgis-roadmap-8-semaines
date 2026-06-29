@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Apprendre QGIS — Roadmap 8 semaines + ressources gratuites</title>
+<meta name="description" content="Ressources pédagogiques gratuites pour apprendre QGIS depuis zéro : roadmap 8 semaines, tutoriel généraliste, module Atlas. Conçu pour étudiants en géographie / aménagement et profils en reconversion design → SIG.">
+<meta name="keywords" content="QGIS, SIG, cartographie, géographie, aménagement, tutoriel, formation, débutant, Atlas, IGN, INSEE">
+<meta property="og:title" content="Apprendre QGIS — Roadmap 8 semaines gratuite">
+<meta property="og:description" content="3 ressources pédagogiques gratuites pour apprendre QGIS depuis zéro. 48h de pratique, 48 exercices, ancrage Toulouse / Haute-Garonne.">
+<meta property="og:type" content="website">
+<style>
+  :root {
+    --navy: #0f2c4a;
+    --turquoise: #1B6E6E;
+    --gold: #d4a017;
+    --plum: #6a4c93;
+    --bg: #f7f5f1;
+    --card: #ffffff;
+    --border: #e1e6eb;
+    --text: #1a2533;
+    --muted: #5a6677;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.65;
+  }
+  header.hero {
+    background: linear-gradient(135deg, var(--navy) 0%, var(--turquoise) 60%, var(--gold) 100%);
+    color: white;
+    padding: 70px 30px 60px;
+    text-align: center;
+  }
+  header.hero h1 {
+    font-size: 2.6em;
+    margin: 0 0 12px;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  header.hero .tagline {
+    font-size: 1.2em;
+    opacity: 0.95;
+    margin: 0 auto;
+    max-width: 700px;
+  }
+  header.hero .meta {
+    margin-top: 28px;
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    flex-wrap: wrap;
+    font-size: 0.92em;
+  }
+  header.hero .meta div {
+    background: rgba(255,255,255,0.15);
+    padding: 8px 18px;
+    border-radius: 20px;
+  }
+  main {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 50px 30px;
+  }
+  .intro {
+    background: var(--card);
+    border-radius: 12px;
+    padding: 30px 35px;
+    margin-bottom: 40px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+    border-left: 5px solid var(--plum);
+  }
+  .intro h2 {
+    color: var(--navy);
+    margin-top: 0;
+    font-size: 1.5em;
+  }
+  .intro p { margin-bottom: 10px; }
+  .resources {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(310px, 1fr));
+    gap: 25px;
+    margin-bottom: 50px;
+  }
+  .resource-card {
+    background: var(--card);
+    border-radius: 12px;
+    padding: 30px 28px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+    border-top: 5px solid var(--turquoise);
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .resource-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+  }
+  .resource-card.primary { border-top-color: var(--gold); border-top-width: 6px; }
+  .resource-card .badge {
+    display: inline-block;
+    background: var(--turquoise);
+    color: white;
+    padding: 4px 12px;
+    border-radius: 14px;
+    font-size: 0.78em;
+    font-weight: 600;
+    margin-bottom: 12px;
+    align-self: flex-start;
+  }
+  .resource-card.primary .badge { background: var(--gold); }
+  .resource-card h3 {
+    color: var(--navy);
+    font-size: 1.3em;
+    margin: 0 0 12px;
+  }
+  .resource-card .stats {
+    color: var(--muted);
+    font-size: 0.92em;
+    margin-bottom: 15px;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 12px;
+  }
+  .resource-card .desc {
+    color: var(--text);
+    margin-bottom: 20px;
+    flex-grow: 1;
+  }
+  .resource-card ul {
+    padding-left: 20px;
+    margin: 0 0 18px;
+    font-size: 0.93em;
+    color: var(--text);
+  }
+  .resource-card ul li { margin-bottom: 4px; }
+  .btn {
+    display: inline-block;
+    background: var(--navy);
+    color: white;
+    text-decoration: none;
+    padding: 12px 22px;
+    border-radius: 6px;
+    font-weight: 600;
+    text-align: center;
+    transition: background 0.2s;
+    align-self: stretch;
+  }
+  .btn:hover { background: var(--turquoise); }
+  .resource-card.primary .btn { background: var(--gold); }
+  .resource-card.primary .btn:hover { background: #b8860b; }
+  .section {
+    background: var(--card);
+    border-radius: 12px;
+    padding: 30px 35px;
+    margin-bottom: 30px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  }
+  .section h2 {
+    color: var(--navy);
+    margin-top: 0;
+    font-size: 1.4em;
+    border-bottom: 2px solid var(--turquoise);
+    padding-bottom: 8px;
+  }
+  .section h3 { color: var(--turquoise); }
+  .data-sources {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 12px;
+    margin-top: 15px;
+  }
+  .data-sources div {
+    background: var(--bg);
+    padding: 10px 14px;
+    border-radius: 6px;
+    font-size: 0.92em;
+  }
+  .data-sources strong { color: var(--navy); display: block; margin-bottom: 2px; }
+  .about {
+    background: linear-gradient(135deg, #f3e5f5, #e8f5e9);
+    border-radius: 12px;
+    padding: 30px 35px;
+    margin-bottom: 30px;
+  }
+  .about h2 { color: var(--plum); margin-top: 0; }
+  .about p { margin-bottom: 8px; }
+  .cta-strip {
+    background: var(--navy);
+    color: white;
+    padding: 35px;
+    border-radius: 12px;
+    text-align: center;
+    margin-bottom: 30px;
+  }
+  .cta-strip h2 {
+    margin-top: 0;
+    color: white;
+    font-size: 1.3em;
+  }
+  .cta-strip p { opacity: 0.9; }
+  .cta-strip a {
+    color: var(--gold);
+    font-weight: 600;
+    text-decoration: none;
+  }
+  .cta-strip a:hover { text-decoration: underline; }
+  footer {
+    text-align: center;
+    padding: 35px 25px;
+    color: var(--muted);
+    font-size: 0.9em;
+    background: var(--card);
+    border-top: 1px solid var(--border);
+  }
+  footer a { color: var(--turquoise); text-decoration: none; }
+  footer a:hover { text-decoration: underline; }
+  .license-box {
+    margin-top: 25px;
+    padding: 15px 20px;
+    background: var(--bg);
+    border-radius: 6px;
+    font-size: 0.88em;
+    color: var(--muted);
+  }
+  @media (max-width: 600px) {
+    header.hero h1 { font-size: 1.7em; }
+    header.hero { padding: 45px 20px 35px; }
+    main { padding: 30px 18px; }
+    .intro, .section, .about, .cta-strip { padding: 22px 20px; }
+    .resource-card { padding: 22px 20px; }
+  }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <h1>Apprendre QGIS depuis zéro</h1>
+  <p class="tagline">3 ressources gratuites pour passer de "je n'ai jamais ouvert QGIS" à "je produis des cartes d'aménagement professionnelles" — en 8 semaines.</p>
+  <div class="meta">
+    <div>📚 3 PDF · 69 pages cumulées</div>
+    <div>🎯 48 exercices avec solutions</div>
+    <div>📍 Données réelles Toulouse / Haute-Garonne</div>
+    <div>🆓 Diffusion libre (CC BY-SA 4.0)</div>
+  </div>
+</header>
+
+<main>
+
+  <div class="intro">
+    <h2>Pour qui ?</h2>
+    <p>Ces ressources ont été conçues initialement pour accompagner <strong>une étudiante graphiste en L3 Géographie-Aménagement</strong> qui n'avait jamais ouvert QGIS. Elles sont aujourd'hui partagées publiquement pour aider tous les profils dans une situation similaire :</p>
+    <ul>
+      <li><strong>Étudiant·es en géographie, aménagement, urbanisme</strong> (L3, M1, M2)</li>
+      <li><strong>Profils en reconversion design / graphisme → SIG</strong></li>
+      <li><strong>Enseignant·es</strong> cherchant un fil conducteur pour structurer un cours QGIS</li>
+      <li><strong>Autodidactes</strong> souhaitant un parcours guidé sur 8 semaines</li>
+    </ul>
+    <p>Aucun pré-requis technique. Aucune connaissance SIG préalable nécessaire. Juste une journée par semaine pendant deux mois.</p>
+  </div>
+
+  <h2 style="color:var(--navy);font-size:1.6em;text-align:center;margin:50px 0 30px;">Les 3 ressources à télécharger</h2>
+
+  <div class="resources">
+
+    <div class="resource-card primary">
+      <span class="badge">Ressource principale</span>
+      <h3>Roadmap QGIS — 8 semaines</h3>
+      <div class="stats">31 pages · 1,4 Mo · niveau débutant total</div>
+      <p class="desc">Le parcours principal : 8 séances structurées d'environ 6h chacune, à raison d'une journée par semaine. Chaque séance produit un livrable cartographique concret.</p>
+      <ul>
+        <li>S1 — Découverte de l'interface, projections, fond OSM</li>
+        <li>S2 — Couches vecteur & table attributaire</li>
+        <li>S3 — Sémiologie cartographique (séance graphiste)</li>
+        <li>S4 — Requêtes attributaires & jointures CSV</li>
+        <li>S5 — Géotraitements & extraction OSM</li>
+        <li>S6 — Analyses d'aménagement (IRIS, OCS GE)</li>
+        <li>S7 — Raster, MNT & relief</li>
+        <li>S8 — Mise en page A3 + bonus Atlas</li>
+      </ul>
+      <a class="btn" href="ROADMAP_QGIS_8_semaines.pdf" download>📥 Télécharger le PDF (1,4 Mo)</a>
+    </div>
+
+    <div class="resource-card">
+      <span class="badge">Ressource complémentaire</span>
+      <h3>Tutoriel généraliste QGIS</h3>
+      <div class="stats">19 pages · 612 Ko · référence à garder ouverte</div>
+      <p class="desc">Tutoriel généraliste en 12 modules thématiques, conçu comme une référence à consulter en parallèle de la roadmap, ou comme parcours autonome plus court.</p>
+      <ul>
+        <li>Qu'est-ce qu'un SIG ? Vocabulaire, vecteur/raster</li>
+        <li>Installation, interface, CRS</li>
+        <li>Couches vecteur, table attributaire</li>
+        <li>Symbologie, étiquettes, sélections</li>
+        <li>Géotraitements essentiels</li>
+        <li>Mise en page imprimable</li>
+        <li>18 exercices avec solutions</li>
+      </ul>
+      <a class="btn" href="QGIS_Tutoriel_Debutant.pdf" download>📥 Télécharger le PDF (612 Ko)</a>
+    </div>
+
+    <div class="resource-card">
+      <span class="badge">Ressource avancée</span>
+      <h3>Module Atlas QGIS approfondi</h3>
+      <div class="stats">19 pages · 790 Ko · génération automatique de cartes</div>
+      <p class="desc">Approfondissement de la fonctionnalité Atlas (génération auto de N cartes à partir d'une mise en page unique). À aborder à la fin de la roadmap principale.</p>
+      <ul>
+        <li>Concept Atlas + couche de couverture</li>
+        <li>Titres & contenus dynamiques [% %]</li>
+        <li>Filtres, tri, variables @atlas_*</li>
+        <li>Pages de couverture, sommaire auto</li>
+        <li>Export massif (PDF, images)</li>
+        <li>10 cas d'usage métier (parcellaire, PPRI, Natura 2000...)</li>
+        <li>7 pièges classiques documentés</li>
+      </ul>
+      <a class="btn" href="QGIS_Module_Atlas.pdf" download>📥 Télécharger le PDF (790 Ko)</a>
+    </div>
+
+  </div>
+
+  <div class="section">
+    <h2>Ordre de lecture recommandé</h2>
+    <ol>
+      <li><strong>Roadmap 8 semaines</strong> — le fil conducteur, à suivre dans l'ordre</li>
+      <li><strong>Tutoriel généraliste</strong> — en référence ouverte à côté pendant le parcours</li>
+      <li><strong>Module Atlas</strong> — à attaquer en arrivant à la séance 8 ou pour aller plus loin</li>
+    </ol>
+    <p>Comptez environ 48 heures de pratique cumulées sur 2 mois pour atteindre l'autonomie opérationnelle décrite (= produire seul·e une planche cartographique de diagnostic territorial complète).</p>
+  </div>
+
+  <div class="section">
+    <h2>Sources de données utilisées dans les exercices</h2>
+    <p>Toutes gratuites, à télécharger en amont sur les portails officiels :</p>
+    <div class="data-sources">
+      <div><strong>Admin Express COG</strong>IGN · contours communaux</div>
+      <div><strong>OCS GE</strong>IGN · occupation du sol</div>
+      <div><strong>RGE ALTI 5 m</strong>IGN · modèle d'altitude</div>
+      <div><strong>Contours IRIS</strong>IGN · découpage infra-communal</div>
+      <div><strong>INSEE RP</strong>recensement de la population</div>
+      <div><strong>INSEE BPE</strong>équipements (santé, écoles, sports)</div>
+      <div><strong>OpenStreetMap</strong>via le plugin QuickOSM</div>
+      <div><strong>Géoportail Urbanisme</strong>PLU, PPRI (bonus)</div>
+    </div>
+  </div>
+
+  <div class="about">
+    <h2>À propos de ces ressources</h2>
+    <p>Ces guides ont été conçus dans une logique <strong>pédagogique appliquée</strong> : chaque séance produit un livrable cartographique concret, sur des données réelles ancrées territorialement.</p>
+    <p>L'auteur accompagne par ailleurs des <strong>bureaux d'études, agences d'urbanisme et collectivités</strong> sur la montée en compétences SIG, l'industrialisation de chaînes cartographiques, et le développement de copilotes GeoAI. Si vous représentez une structure intéressée par une formation interne ou un accompagnement projet, le contact est en pied de page.</p>
+    <p>Les ressources sont mises à jour régulièrement. Vos retours sont précieux pour les améliorer.</p>
+  </div>
+
+  <div class="cta-strip">
+    <h2>Un retour ? Une question ? Une suggestion ?</h2>
+    <p>Toute remarque pour améliorer ces ressources est la bienvenue.<br>
+    Contactez-moi via <a href="https://www.linkedin.com/in/sow-papa-mamadou/" target="_blank" rel="noopener">LinkedIn</a> — je réponds à tous les messages.</p>
+  </div>
+
+  <div class="license-box">
+    <strong>Licence Creative Commons BY-SA 4.0</strong> — vous êtes libre de partager, redistribuer, adapter ces ressources, y compris à des fins commerciales, à condition de créditer l'auteur et de partager sous la même licence. <a href="https://creativecommons.org/licenses/by-sa/4.0/deed.fr" target="_blank" rel="noopener">Détails de la licence</a>.
+  </div>
+
+</main>
+
+<footer>
+  <p>Ressources pédagogiques QGIS · Diffusion libre · 2026</p>
+  <p><a href="https://www.linkedin.com/in/sow-papa-mamadou/" target="_blank" rel="noopener">LinkedIn — SOW Papa Mamadou</a> · <a href="https://github.com/sowpapa2015" target="_blank" rel="noopener">GitHub</a></p>
+</footer>
+
+</body>
+</html>
