@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bibliothèque de données — Roadmap QGIS · approche académique</title>
+<meta name="description" content="Pour chaque donnée mobilisée dans la roadmap : lien direct vérifié, description scientifique, questionnement académique, usage pédagogique.">
+<style>
+  body{font-family:-apple-system,Segoe UI,sans-serif;margin:0;padding:0;background:#f7f5f1;color:#1a2533;line-height:1.65}
+  header{background:linear-gradient(135deg,#0f2c4a 0%,#1B6E6E 60%,#d4a017 100%);color:#fff;padding:50px 30px;text-align:center}
+  header h1{margin:0 0 10px;font-size:2.1em}
+  header p{margin:0;opacity:0.95;font-size:1.1em}
+  .container{max-width:1100px;margin:0 auto;padding:30px}
+  .intro{background:#fff;border:1px solid #e1e6eb;border-radius:10px;padding:25px 30px;margin-bottom:30px;border-left:5px solid #6a4c93}
+  .intro h2{margin-top:0;color:#6a4c93;font-size:1.4em}
+  .nav-data{display:flex;flex-wrap:wrap;gap:8px;margin:25px 0;justify-content:center}
+  .nav-data a{background:#0f2c4a;color:#fff;padding:8px 14px;border-radius:18px;text-decoration:none;font-size:0.85em;font-weight:600}
+  .nav-data a:hover{background:#1B6E6E}
+  .dataset{background:#fff;border-radius:10px;padding:30px 35px;margin:30px 0;box-shadow:0 2px 8px rgba(0,0,0,0.06);border-top:5px solid #1B6E6E;scroll-margin-top:20px}
+  .dataset h2{color:#0f2c4a;margin-top:0;font-size:1.6em}
+  .meta{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0;font-size:0.85em}
+  .meta span{background:#f0f7f0;color:#1b5e20;padding:4px 12px;border-radius:14px;border:1px solid #c8e6c9}
+  .meta span.alert{background:#fff8e7;color:#b26a00;border-color:#ffe0b2}
+  .meta span.info{background:#e3f2fd;color:#0d47a1;border-color:#bbdefb}
+  h3.section{color:#1B6E6E;margin-top:25px;padding-bottom:5px;border-bottom:2px solid #f0e6c4;font-size:1.15em}
+  .repr{background:#fefcf7;border-left:4px solid #d4a017;padding:14px 20px;border-radius:5px;margin:12px 0}
+  .repr strong{color:#b26a00}
+  .quest{background:linear-gradient(135deg,#f3e5f5,#ede7f6);border-left:5px solid #6a4c93;padding:18px 22px;border-radius:8px;margin:18px 0}
+  .quest h4{margin-top:0;color:#6a4c93;font-size:1.05em}
+  .quest ol{margin:8px 0;padding-left:24px}
+  .quest ol li{margin-bottom:8px}
+  .down{background:#f0f7f0;border:2px solid #c8e6c9;border-radius:8px;padding:14px 20px;margin:15px 0}
+  .down strong{color:#1b5e20}
+  .btn-direct{display:inline-block;background:#2e7d32;color:#fff;padding:10px 22px;border-radius:6px;text-decoration:none;font-weight:600;margin:5px 8px 5px 0;font-size:0.92em}
+  .btn-direct:hover{background:#1b5e20}
+  .btn-cat{display:inline-block;background:#1976d2;color:#fff;padding:8px 18px;border-radius:6px;text-decoration:none;font-weight:600;margin:5px 8px 5px 0;font-size:0.88em}
+  .btn-cat:hover{background:#0d47a1}
+  .usage{background:#fff;border:1px solid #e1e6eb;border-radius:6px;padding:12px 18px;margin:10px 0}
+  .usage strong{color:#0f2c4a}
+  table{border-collapse:collapse;width:100%;margin:12px 0;background:#fff;font-size:0.9em}
+  th{background:#0f2c4a;color:#fff;padding:8px 12px;text-align:left}
+  td{border:1px solid #e1e6eb;padding:7px 12px;vertical-align:top}
+  tr:nth-child(even){background:#f7f5f1}
+  code{background:#eef1f4;padding:2px 6px;border-radius:3px;font-family:Consolas,monospace;color:#c0392b;font-size:0.88em}
+  .why-continue{background:linear-gradient(135deg,#0f2c4a,#1B6E6E);color:#fff;border-radius:12px;padding:30px 35px;margin:40px 0}
+  .why-continue h2{margin-top:0;color:#fff;border:none}
+  .why-continue ul li{margin-bottom:10px}
+  footer{text-align:center;padding:25px;color:#5a6677;font-size:0.85em;background:#fff;border-top:1px solid #e1e6eb}
+</style>
+</head>
+<body>
+
+<header>
+<h1>📚 Bibliothèque de données — Roadmap QGIS</h1>
+<p>Pour chaque donnée mobilisée : ce qu'elle est, d'où elle vient, comment la chercher, comment l'interroger scientifiquement.</p>
+</header>
+
+<div class="container">
+
+<!-- INTRO ACADEMIQUE -->
+<div class="intro">
+<h2>🎓 Pourquoi cette page ?</h2>
+
+<p>Une donnée géographique n'est jamais neutre. <strong>Elle est produite par une institution, à un moment, avec un objectif, et selon une méthode</strong>. La comprendre, c'est s'interroger sur sa <em>provenance</em>, sa <em>fiabilité</em>, ses <em>limites</em> et ses <em>usages légitimes</em>.</p>
+
+<p>Cette page reprend chacun des <strong>8 jeux de données</strong> utilisés dans la roadmap et propose, pour chacun :</p>
+<ol>
+<li>Le <strong>lien direct vérifié</strong> qui télécharge le fichier officiel</li>
+<li>Le <strong>lien catalogue</strong> du producteur (IGN, INSEE) pour aller chercher d'autres millésimes ou d'autres territoires</li>
+<li>Une <strong>description scientifique</strong> de ce que la donnée représente réellement</li>
+<li>Les <strong>usages académiques pertinents</strong> (mémoire, étude, recherche)</li>
+<li>Un <strong>questionnement critique</strong> à se poser avant et après l'analyse</li>
+</ol>
+
+<p><strong>Posture attendue de l'apprenant :</strong> ne pas être un simple consommateur de données téléchargées, mais un <strong>analyste capable de remonter à la source</strong>, de juger la pertinence d'un dataset, et de problématiser son usage.</p>
+</div>
+
+<!-- NAVIGATION -->
+<nav class="nav-data">
+<a href="#admin-express">Admin Express</a>
+<a href="#contours-iris">Contours IRIS</a>
+<a href="#insee-pop">INSEE Population</a>
+<a href="#bpe">BPE Équipements</a>
+<a href="#osm">OSM</a>
+<a href="#ocsge">OCS GE</a>
+<a href="#bdalti">BD ALTI</a>
+<a href="#banatic">EPCI BANATIC</a>
+<a href="#problematique">Problématique fil rouge</a>
+<a href="#continuer">Pourquoi continuer</a>
+</nav>
+
+<!-- ============================================ -->
+<!-- ADMIN EXPRESS                                 -->
+<!-- ============================================ -->
+<section class="dataset" id="admin-express">
+<h2>1. Admin Express COG — communes, EPCI, départements</h2>
+
+<div class="meta">
+<span class="info">Producteur : IGN</span>
+<span class="info">Format : Shapefile</span>
+<span class="info">Projection : Lambert-93 (EPSG:2154)</span>
+<span class="info">Millésime : 2024-02-22 (3-2)</span>
+<span>Licence : Etalab 2.0 Ouverte</span>
+<span>Volume : 238 Mo (.7z)</span>
+</div>
+
+<h3 class="section">📥 Téléchargement</h3>
+<div class="down">
+<a class="btn-direct" href="https://data.geopf.fr/telechargement/download/ADMIN-EXPRESS-COG/ADMIN-EXPRESS-COG_3-2__SHP_LAMB93_FXX_2024-02-22/ADMIN-EXPRESS-COG_3-2__SHP_LAMB93_FXX_2024-02-22.7z" target="_blank" rel="noopener">📥 Télécharger Admin Express COG 2024 (238 Mo)</a>
+<a class="btn-cat" href="https://cartes.gouv.fr/rechercher-une-donnee/dataset/IGNF_ADMIN-EXPRESS" target="_blank" rel="noopener">🔗 Catalogue cartes.gouv.fr</a>
+<br><small><strong>Vérifié 30/06/2026.</strong> URL stable IGN Géoplateforme. Pour un autre millésime : voir le catalogue.</small>
+</div>
+
+<h3 class="section">🔬 Ce que la donnée représente</h3>
+<div class="repr">
+<strong>Définition :</strong> référentiel administratif officiel à grande échelle, produit annuellement par l'IGN selon le Code Officiel Géographique (COG) en vigueur au 1er janvier. Contient les contours géométriques précis de toutes les communes, arrondissements, cantons, EPCI, départements et régions.
+<br><br>
+<strong>Précision géométrique :</strong> issue de la BD TOPO® (échelle 1:25 000), avec ajustement aux limites cadastrales. Précision absolue ~5-10 m.
+<br><br>
+<strong>Attention :</strong> le millésime est figé au 1er janvier de l'année. Les fusions communales postérieures (ex. communes nouvelles) ne seront intégrées qu'au millésime suivant.
+</div>
+
+<h3 class="section">🎓 Usages académiques</h3>
+<div class="usage">
+<strong>Géographie politique :</strong> représentation des découpages administratifs, étude des recompositions territoriales (intercommunalités, communes nouvelles).<br>
+<strong>Aménagement :</strong> calcul de surfaces, périmètres, agrégation à l'échelle départementale ou intercommunale.<br>
+<strong>Statistique territoriale :</strong> support de jointure pour tout indicateur publié à l'échelle commune (population, fiscalité, équipements).<br>
+<strong>Cartographie thématique :</strong> fond cartographique normalisé pour toute production cartographique territoriale en France.
+</div>
+
+<h3 class="section">❓ Questionnement académique</h3>
+<div class="quest">
+<h4>À te poser avant de t'en servir</h4>
+<ol>
+<li>Quel <strong>millésime</strong> utiliser pour ton étude ? Pourquoi ce choix par rapport aux autres ?</li>
+<li>Quelle <strong>échelle</strong> est pertinente pour ta question : commune, EPCI, département, région ?</li>
+<li>Comment les <strong>communes nouvelles</strong> (fusions) affectent-elles tes comparaisons inter-millésimes ?</li>
+<li>Quelles <strong>limites de précision</strong> dois-tu mentionner dans ton mémoire ou ton article ?</li>
+</ol>
+</div>
+</section>
+
+<!-- ============================================ -->
+<!-- CONTOURS IRIS                                 -->
+<!-- ============================================ -->
+<section class="dataset" id="contours-iris">
+<h2>2. Contours IRIS — découpage infra-communal INSEE</h2>
+
+<div class="meta">
+<span class="info">Producteur : IGN sur référentiel INSEE</span>
+<span class="info">Format : GeoPackage</span>
+<span class="info">Projection : Lambert-93</span>
+<span class="info">Millésime : 2026-01-01 (3-0)</span>
+<span>Licence : Etalab 2.0 Ouverte</span>
+<span>Volume : 41 Mo (.7z)</span>
+</div>
+
+<h3 class="section">📥 Téléchargement</h3>
+<div class="down">
+<a class="btn-direct" href="https://data.geopf.fr/telechargement/download/CONTOURS-IRIS/CONTOURS-IRIS_3-0__GPKG_LAMB93_FXX_2026-01-01/CONTOURS-IRIS_3-0__GPKG_LAMB93_FXX_2026-01-01.7z" target="_blank" rel="noopener">📥 ContoursIRIS 2026 GPKG (41 Mo)</a>
+<a class="btn-cat" href="https://cartes.gouv.fr/rechercher-une-donnee/dataset/IGNF_CONTOURS-IRIS" target="_blank" rel="noopener">🔗 Catalogue cartes.gouv.fr</a>
+</div>
+
+<h3 class="section">🔬 Ce que la donnée représente</h3>
+<div class="repr">
+<strong>Définition :</strong> IRIS = « Îlots Regroupés pour l'Information Statistique ». C'est le découpage infra-communal de référence de l'INSEE pour la diffusion des données issues du recensement.
+<br><br>
+<strong>Couverture :</strong> toutes les communes de plus de 10 000 habitants, et la plupart de celles de 5 000 à 10 000 habitants. Les communes plus petites ne sont pas découpées et constituent un IRIS unique. Chaque IRIS regroupe environ 2 000 habitants, avec des exceptions selon le contexte urbain.
+<br><br>
+<strong>Construction :</strong> définition à partir des îlots du recensement, regroupés selon des critères de continuité géographique, d'homogénéité sociale et de tracé physique (rues, voies ferrées, cours d'eau).
+<br><br>
+<strong>3 types :</strong> habitat, activité (zones d'activité économique > 1 000 salariés), divers (parcs urbains, cimetières, etc.).
+</div>
+
+<h3 class="section">🎓 Usages académiques</h3>
+<div class="usage">
+<strong>Sociologie urbaine :</strong> ségrégation socio-spatiale à l'échelle du quartier, gentrification, indicateurs de précarité.<br>
+<strong>Géographie de la santé :</strong> accessibilité aux soins par quartier, inégalités territoriales infra-communales.<br>
+<strong>Politiques urbaines :</strong> délimitation des Quartiers Prioritaires de la Politique de la Ville (QPV), suivi des contrats urbains.<br>
+<strong>Aménagement :</strong> étude fine des dynamiques résidentielles, des flux pendulaires (mobilités domicile-travail).
+</div>
+
+<h3 class="section">❓ Questionnement académique</h3>
+<div class="quest">
+<h4>À te poser avant de t'en servir</h4>
+<ol>
+<li>Pourquoi le découpage IRIS est-il <strong>plus pertinent que la commune</strong> pour étudier les inégalités urbaines à Toulouse ?</li>
+<li>Quels sont les <strong>biais</strong> du regroupement IRIS (effet de seuil, hétérogénéité interne aux IRIS) ?</li>
+<li>Comment combiner IRIS et données fiscales / RP / éducation pour produire un <strong>indice composite</strong> ?</li>
+<li>L'IRIS reflète-t-il la perception réelle qu'ont les habitants de leur « quartier » ?</li>
+</ol>
+</div>
+</section>
+
+<!-- ============================================ -->
+<!-- INSEE POPULATION                              -->
+<!-- ============================================ -->
+<section class="dataset" id="insee-pop">
+<h2>3. INSEE — Populations légales communales</h2>
+
+<div class="meta">
+<span class="info">Producteur : INSEE</span>
+<span class="info">Format : CSV / Excel</span>
+<span class="info">Millésime : annuel, RP le plus récent</span>
+<span>Licence : Etalab 2.0 Ouverte</span>
+<span>Volume : ~5 Mo</span>
+<span class="alert">⚠️ Téléchargement manuel</span>
+</div>
+
+<h3 class="section">📥 Téléchargement</h3>
+<div class="down">
+<a class="btn-cat" href="https://www.insee.fr/fr/information/2008354" target="_blank" rel="noopener">🔗 INSEE — Populations légales (page de référence)</a>
+<a class="btn-cat" href="https://www.data.gouv.fr/fr/datasets/populations-legales-communales-et-departementales/" target="_blank" rel="noopener">🔗 data.gouv.fr (miroir)</a>
+<br><small><strong>Procédure :</strong> sur la page INSEE, choisir le millésime le plus récent → cliquer sur le fichier « Populations légales en vigueur au 1er janvier YYYY » au format Excel ou CSV → fichier ~5 Mo.</small>
+</div>
+
+<h3 class="section">🔬 Ce que la donnée représente</h3>
+<div class="repr">
+<strong>Définition :</strong> populations municipales et totales légales publiées chaque année au Journal Officiel. Elles servent de référence à l'ensemble des textes législatifs et réglementaires faisant intervenir des seuils de population (élections, dotations, taxes, etc.).
+<br><br>
+<strong>Construction :</strong> moyennée sur 5 années de collectes du recensement de la population (rolling census INSEE depuis 2004). La population publiée en année N correspond au millésime N-3 (par exemple, populations légales 2024 = millésime 2021).
+<br><br>
+<strong>3 catégories :</strong>
+<ul>
+<li><strong>Population municipale</strong> (PMUN) : résidents habituels de la commune. C'est la donnée à utiliser pour la plupart des analyses.</li>
+<li><strong>Population comptée à part</strong> (PCAP) : personnes ayant un autre domicile principal ailleurs mais comptées dans la commune (étudiants, militaires).</li>
+<li><strong>Population totale</strong> (PTOT) : somme des deux.</li>
+</ul>
+</div>
+
+<h3 class="section">🎓 Usages académiques</h3>
+<div class="usage">
+<strong>Géographie de la population :</strong> dynamiques démographiques, croissance / décroissance, vieillissement.<br>
+<strong>Aménagement :</strong> dimensionnement des équipements, calcul de densités, indicateurs d'attractivité.<br>
+<strong>Sciences politiques :</strong> seuils électoraux (mode de scrutin différent ≥ 1 000 hab), dotation globale de fonctionnement (DGF).<br>
+<strong>Économie territoriale :</strong> base de tout indicateur ramené à la population (taux pour 1 000 hab).
+</div>
+
+<h3 class="section">❓ Questionnement académique</h3>
+<div class="quest">
+<h4>À te poser avant de t'en servir</h4>
+<ol>
+<li>Quelle est la <strong>différence entre population municipale et population totale</strong> pour ton analyse ?</li>
+<li>Pourquoi y a-t-il <strong>un décalage de 3 ans</strong> entre l'année du recensement et l'année de publication ?</li>
+<li>La population municipale reflète-t-elle <strong>la population qui utilise réellement les services</strong> de la commune (présence diurne, étudiants, travailleurs externes) ?</li>
+<li>Comment interpréter les <strong>évolutions inter-millésimes</strong> sans tomber dans des comparaisons biaisées (changement de découpage, fusions communales) ?</li>
+</ol>
+</div>
+</section>
+
+<!-- ============================================ -->
+<!-- BPE                                           -->
+<!-- ============================================ -->
+<section class="dataset" id="bpe">
+<h2>4. INSEE — Base Permanente des Équipements (BPE)</h2>
+
+<div class="meta">
+<span class="info">Producteur : INSEE</span>
+<span class="info">Format : CSV</span>
+<span class="info">Millésime : 2020 (consolidé) / 2024 (géolocalisé récent)</span>
+<span>Licence : Etalab 2.0 Ouverte</span>
+<span>Volume : 156 Mo (national) → 2,6 Mo (filtré 31) → 160 Ko (filtré Toulouse)</span>
+</div>
+
+<h3 class="section">📥 Téléchargement</h3>
+<div class="down">
+<a class="btn-direct" href="https://www.data.gouv.fr/api/1/datasets/r/63a7a69c-0155-4a8e-a73b-2009ee92eda2" target="_blank" rel="noopener">📥 BPE consolidée historique (156 Mo)</a>
+<a class="btn-cat" href="https://www.insee.fr/fr/statistiques/8217525" target="_blank" rel="noopener">🔗 INSEE BPE 2024 (catalogue)</a>
+<br><small><strong>Vérifié 30/06/2026.</strong> Le fichier consolidé data.gouv reste utile pour l'apprentissage. Pour des analyses académiques publiables : utiliser le millésime le plus récent INSEE 2024 (géolocalisé).</small>
+</div>
+
+<h3 class="section">🔬 Ce que la donnée représente</h3>
+<div class="repr">
+<strong>Définition :</strong> recensement exhaustif annuel par l'INSEE de tous les équipements et services accessibles aux particuliers, classés en 7 grands domaines (services aux particuliers, commerce, enseignement, santé, transports, sports/loisirs/culture, tourisme).
+<br><br>
+<strong>~187 types d'équipements</strong> codifiés (ex. <code>D201</code> = médecin généraliste, <code>C104</code> = école élémentaire, <code>D301</code> = pharmacie).
+<br><br>
+<strong>Sources :</strong> agrégation de fichiers administratifs (FINESS pour la santé, RAMSESE pour l'enseignement, Sirene pour les commerces, etc.) + déclarations communales.
+<br><br>
+<strong>Granularité :</strong> géolocalisation à l'adresse (millésimes récents) ou à la commune (millésimes anciens).
+</div>
+
+<h3 class="section">🎓 Usages académiques</h3>
+<div class="usage">
+<strong>Géographie des services :</strong> accessibilité spatiale aux soins, à l'éducation, aux commerces.<br>
+<strong>Inégalités territoriales :</strong> identification des « déserts médicaux », des zones rurales sous-équipées.<br>
+<strong>Aménagement :</strong> dimensionnement des équipements publics, planification de PLU.<br>
+<strong>Mobilité :</strong> couplage avec données transport pour analyses d'accessibilité multi-modale.<br>
+<strong>Santé publique :</strong> base de tout indicateur d'offre de soins par bassin de vie.
+</div>
+
+<h3 class="section">❓ Questionnement académique</h3>
+<div class="quest">
+<h4>À te poser avant de t'en servir</h4>
+<ol>
+<li>La BPE compte les équipements, mais <strong>ne mesure pas leur fréquentation</strong>. Comment compenser cette limite ?</li>
+<li>Un équipement présent dans une commune <strong>est-il accessible aux habitants des communes voisines</strong> ? Comment modéliser cette accessibilité ?</li>
+<li>Le concept de <strong>« désert médical »</strong> est-il scientifiquement défini, ou est-il essentiellement médiatique ?</li>
+<li>Quelles sont les <strong>limites de la géolocalisation par commune</strong> pour mesurer une réelle accessibilité piétonne / cycliste / en voiture ?</li>
+</ol>
+</div>
+</section>
+
+<!-- ============================================ -->
+<!-- OSM                                           -->
+<!-- ============================================ -->
+<section class="dataset" id="osm">
+<h2>5. OpenStreetMap — données collaboratives mondiales</h2>
+
+<div class="meta">
+<span class="info">Producteur : communauté OSM (mondiale)</span>
+<span class="info">Format : variable (récupéré via QuickOSM)</span>
+<span class="info">Mise à jour : continue (temps réel)</span>
+<span>Licence : ODbL (partage à l'identique avec attribution)</span>
+<span>Volume : variable selon requête</span>
+</div>
+
+<h3 class="section">📥 Téléchargement</h3>
+<div class="down">
+<a class="btn-cat" href="https://plugins.qgis.org/plugins/QuickOSM/" target="_blank" rel="noopener">🔌 Plugin QuickOSM (QGIS)</a>
+<a class="btn-cat" href="https://download.geofabrik.de/europe/france/midi-pyrenees.html" target="_blank" rel="noopener">🔗 Extrait Midi-Pyrénées (Geofabrik, .osm.pbf)</a>
+<br><small><strong>Méthode recommandée :</strong> plugin QuickOSM dans QGIS, requête par tag (ex. <code>public_transport=stop_position</code>) sur l'étendue du canevas Toulouse.</small>
+</div>
+
+<h3 class="section">🔬 Ce que la donnée représente</h3>
+<div class="repr">
+<strong>Définition :</strong> base de données géographique collaborative ouverte, alimentée par des millions de contributeurs bénévoles dans le monde. Couvre routes, bâtiments, équipements, hydrographie, occupation du sol, points d'intérêt, etc.
+<br><br>
+<strong>Modèle :</strong> 3 types d'objets — nœuds (points), chemins (lignes ou polygones), relations (combinaisons). Chaque objet porte des tags (clé=valeur) qui décrivent ce qu'il est.
+<br><br>
+<strong>Forces :</strong> mise à jour quasi temps réel, exhaustivité dans les zones urbaines bien cartographiées, granularité fine (ex. arrêts de bus avec horaires, sens de circulation, type de revêtement).
+<br><br>
+<strong>Limites :</strong> qualité hétérogène selon les régions, biais des contributeurs (urbain > rural, pays développés > pays du Sud), pas de garantie de complétude.
+</div>
+
+<h3 class="section">🎓 Usages académiques</h3>
+<div class="usage">
+<strong>Géographie urbaine :</strong> analyse fine du tissu urbain (typologie bâti, trame viaire).<br>
+<strong>Mobilités :</strong> calculs d'itinéraires, accessibilité piétonne / cycliste / transport en commun.<br>
+<strong>Tourisme :</strong> cartographie des points d'intérêt, sentiers de randonnée.<br>
+<strong>Recherche sur la cartographie participative :</strong> sociologie des contributeurs, évolution temporelle de la base.
+</div>
+
+<h3 class="section">❓ Questionnement académique</h3>
+<div class="quest">
+<h4>À te poser avant de t'en servir</h4>
+<ol>
+<li>Quelle est la <strong>qualité réelle d'OSM</strong> sur ton territoire d'étude ? (compléter par audit visuel ou comparaison avec un référentiel officiel)</li>
+<li>Quels sont les <strong>biais de production collaborative</strong> qui peuvent affecter ton analyse ?</li>
+<li>Comment <strong>citer correctement</strong> OSM dans un travail académique (ODbL, attribution, version, date d'extraction) ?</li>
+<li>Pourquoi privilégier OSM plutôt qu'un référentiel officiel IGN ? Inversement, dans quels cas préférer l'IGN ?</li>
+</ol>
+</div>
+</section>
+
+<!-- ============================================ -->
+<!-- OCSGE                                         -->
+<!-- ============================================ -->
+<section class="dataset" id="ocsge">
+<h2>6. OCS GE — Occupation du Sol Grande Échelle</h2>
+
+<div class="meta">
+<span class="info">Producteur : IGN</span>
+<span class="info">Format : Shapefile</span>
+<span class="info">Projection : Lambert-93</span>
+<span class="info">Millésime : 2019 (D031 disponible)</span>
+<span>Licence : Etalab 2.0 Ouverte</span>
+<span>Volume : 27 Mo (.7z) pour Haute-Garonne</span>
+</div>
+
+<h3 class="section">📥 Téléchargement</h3>
+<div class="down">
+<a class="btn-direct" href="https://data.geopf.fr/telechargement/download/OCSGE/OCS-GE_1-1__SHP_LAMB93_D031_2019-01-01/OCS-GE_1-1__SHP_LAMB93_D031_2019-01-01.7z" target="_blank" rel="noopener">📥 OCS GE Haute-Garonne 2019 (27 Mo)</a>
+<a class="btn-cat" href="https://cartes.gouv.fr/rechercher-une-donnee/dataset/IGNF_OCS-GE" target="_blank" rel="noopener">🔗 Catalogue cartes.gouv.fr</a>
+<br><small><strong>Vérifié 30/06/2026.</strong> Pour des millésimes plus récents ou d'autres départements, consulter le catalogue IGN.</small>
+</div>
+
+<h3 class="section">🔬 Ce que la donnée représente</h3>
+<div class="repr">
+<strong>Définition :</strong> référentiel national d'occupation et d'usage du sol au sens de la loi Climat-Résilience 2021 (loi ZAN = Zéro Artificialisation Nette). Produit par l'IGN à partir de photographies aériennes haute résolution.
+<br><br>
+<strong>Modèle 2D :</strong> chaque polygone porte deux attributs distincts :
+<ul>
+<li><strong>Couverture du sol (CS)</strong> — quelle est la matière physique présente ? (bâti, route, sol nu, formation végétale, eau...)</li>
+<li><strong>Usage du sol (US)</strong> — à quoi sert cet espace ? (résidentiel, industriel, agricole, forestier, transport...)</li>
+</ul>
+<br>
+<strong>Définition de l'artificialisation (décret 2022-1322) :</strong> au sens du ZAN, une surface est dite « artificialisée » selon une combinaison conjointe de CS et US — la simplification « CS1 + CS2 » est pédagogiquement commode mais incomplète juridiquement.
+<br><br>
+<strong>Précision :</strong> photo-interprétation à 1:2 500, contrôlée à 200 m² minimum d'unité cartographiée.
+</div>
+
+<h3 class="section">🎓 Usages académiques</h3>
+<div class="usage">
+<strong>Aménagement et urbanisme :</strong> mesure de l'artificialisation, trajectoires ZAN, diagnostic SCOT/PLUi.<br>
+<strong>Géographie rurale :</strong> dynamiques agricoles, déprise, remembrement.<br>
+<strong>Environnement :</strong> fragmentation des espaces naturels, continuités écologiques.<br>
+<strong>Droit de l'urbanisme :</strong> support juridique des projets d'aménagement contestés ou autorisés.
+</div>
+
+<h3 class="section">❓ Questionnement académique</h3>
+<div class="quest">
+<h4>À te poser avant de t'en servir</h4>
+<ol>
+<li>Pourquoi <strong>la définition légale de l'artificialisation</strong> est-elle controversée (technique vs juridique vs politique) ?</li>
+<li>Quelle est <strong>la pertinence d'un millésime 2019</strong> pour une étude publiée en 2026 ?</li>
+<li>Quels <strong>biais de photo-interprétation</strong> peuvent affecter la fiabilité de l'OCS GE ?</li>
+<li>Comment articuler OCS GE avec d'autres référentiels d'occupation du sol (Corine Land Cover, BD TOPO) ?</li>
+</ol>
+</div>
+</section>
+
+<!-- ============================================ -->
+<!-- BD ALTI                                       -->
+<!-- ============================================ -->
+<section class="dataset" id="bdalti">
+<h2>7. BD ALTI 25 m — Modèle Numérique de Terrain</h2>
+
+<div class="meta">
+<span class="info">Producteur : IGN</span>
+<span class="info">Format : ASC (ASCII Grid)</span>
+<span class="info">Résolution : 25 m × 25 m</span>
+<span class="info">Référence altimétrique : IGN69 (Lambert-93)</span>
+<span>Licence : Etalab 2.0 Ouverte</span>
+<span>Volume : 35 Mo (.7z) pour Haute-Garonne</span>
+</div>
+
+<h3 class="section">📥 Téléchargement</h3>
+<div class="down">
+<a class="btn-direct" href="https://data.geopf.fr/telechargement/download/BDALTI/BDALTIV2_2-0_25M_ASC_LAMB93-IGN69_D031_2021-05-12/BDALTIV2_2-0_25M_ASC_LAMB93-IGN69_D031_2021-05-12.7z" target="_blank" rel="noopener">📥 BD ALTI 25m Haute-Garonne (35 Mo)</a>
+<a class="btn-cat" href="https://cartes.gouv.fr/rechercher-une-donnee/dataset/IGNF_BD-ALTI" target="_blank" rel="noopener">🔗 Catalogue cartes.gouv.fr BD ALTI</a>
+<a class="btn-cat" href="https://cartes.gouv.fr/rechercher-une-donnee/dataset/IGNF_RGE-ALTI" target="_blank" rel="noopener">🔗 Catalogue RGE ALTI (haute résolution 1m)</a>
+</div>
+
+<h3 class="section">🔬 Ce que la donnée représente</h3>
+<div class="repr">
+<strong>Définition :</strong> Modèle Numérique de Terrain (MNT) couvrant l'ensemble du territoire français, donnant l'altitude du sol nu (sans végétation ni bâti) en mètres au-dessus du niveau zéro IGN69 (référentiel altimétrique national).
+<br><br>
+<strong>Construction :</strong> issu de plusieurs sources fusionnées (corrélations photogrammétriques, levés LIDAR aéroportés, sondes acoustiques en zone littorale).
+<br><br>
+<strong>Précision :</strong> erreur quadratique moyenne de l'ordre de quelques mètres en plaine, dégradée en montagne (jusqu'à 10-15 m en haute montagne).
+<br><br>
+<strong>BD ALTI vs RGE ALTI :</strong> BD ALTI = 25 m (~50 Mo par département), suffisant pour études régionales. RGE ALTI = 1-5 m (~1,5 Go par département), nécessaire pour études fines (modélisation hydraulique, micro-relief).
+</div>
+
+<h3 class="section">🎓 Usages académiques</h3>
+<div class="usage">
+<strong>Géomorphologie :</strong> analyse du relief, identification des unités géomorphologiques.<br>
+<strong>Hydrologie :</strong> tracé automatique des bassins versants, modélisation de l'écoulement, identification des zones inondables théoriques.<br>
+<strong>Climatologie :</strong> calcul de gradients altitudinaux, identification des effets d'abri.<br>
+<strong>Géographie physique :</strong> profils altimétriques, modélisation 3D, cartographie topographique.
+</div>
+
+<h3 class="section">❓ Questionnement académique</h3>
+<div class="quest">
+<h4>À te poser avant de t'en servir</h4>
+<ol>
+<li>Une analyse des <strong>zones basses inondables</strong> à partir d'un MNT seul est-elle légitime, ou simplement indicative ?</li>
+<li>Quelle <strong>résolution</strong> est suffisante pour ta question (25 m vs 5 m vs 1 m vs LIDAR THR) ?</li>
+<li>Pourquoi le MNT est-il <strong>moins précis en montagne</strong> qu'en plaine, et comment en tenir compte ?</li>
+<li>Comment articuler MNT (sol nu) et MNS (Modèle Numérique de Surface, avec bâti et végétation) ?</li>
+</ol>
+</div>
+</section>
+
+<!-- ============================================ -->
+<!-- BANATIC                                       -->
+<!-- ============================================ -->
+<section class="dataset" id="banatic">
+<h2>8. BANATIC — Annuaire national des EPCI</h2>
+
+<div class="meta">
+<span class="info">Producteur : Ministère de l'Intérieur (DGCL)</span>
+<span class="info">Format : page web / export CSV</span>
+<span class="info">Mise à jour : permanente</span>
+<span>Licence : Etalab 2.0 Ouverte</span>
+<span>Volume : <1 Mo</span>
+<span class="alert">⚠️ Pas de lien direct SIREN</span>
+</div>
+
+<h3 class="section">📥 Téléchargement</h3>
+<div class="down">
+<a class="btn-cat" href="https://www.banatic.interieur.gouv.fr/" target="_blank" rel="noopener">🔗 Page d'accueil BANATIC</a>
+<a class="btn-cat" href="https://fr.wikipedia.org/wiki/Toulouse_M%C3%A9tropole" target="_blank" rel="noopener">🔗 Wikipédia Toulouse Métropole (alternative)</a>
+<br><small><strong>Procédure :</strong> page d'accueil → menu Consultation → Rechercher une collectivité → saisir « Toulouse Métropole » ou SIREN 243100518 → liste des 37 communes affichée.</small>
+<br><small><strong>Plus rapide :</strong> dans QGIS, filtrer Admin Express sur <code>"SIREN_EPCI" = '243100518'</code> → 37 communes directement extraites.</small>
+</div>
+
+<h3 class="section">🔬 Ce que la donnée représente</h3>
+<div class="repr">
+<strong>Définition :</strong> Base nationale sur l'Intercommunalité (BANATIC) recense l'ensemble des établissements publics de coopération intercommunale à fiscalité propre (EPCI) : communautés de communes, communautés d'agglomération, communautés urbaines, métropoles, syndicats mixtes.
+<br><br>
+<strong>Contenu pour chaque EPCI :</strong> SIREN, nom, type, date de création, compétences exercées, liste des communes membres, périmètre.
+<br><br>
+<strong>Importance :</strong> les EPCI sont aujourd'hui le niveau pertinent pour de nombreuses politiques publiques (urbanisme via les PLUi, mobilité, gestion des déchets, eau potable).
+</div>
+
+<h3 class="section">🎓 Usages académiques</h3>
+<div class="usage">
+<strong>Géographie politique :</strong> recomposition territoriale post-loi NOTRe (2015), montée des intercommunalités intégrées.<br>
+<strong>Aménagement :</strong> base juridique pour analyser les périmètres de planification (SCOT, PLUi).<br>
+<strong>Sciences politiques :</strong> évolution de la décentralisation, transferts de compétences communes → EPCI.
+</div>
+
+<h3 class="section">❓ Questionnement académique</h3>
+<div class="quest">
+<h4>À te poser avant de t'en servir</h4>
+<ol>
+<li>L'EPCI est-il le <strong>périmètre pertinent</strong> pour étudier les pratiques quotidiennes des habitants (mobilités, achats, loisirs) ?</li>
+<li>Quelle est <strong>la légitimité démocratique</strong> des EPCI (élus indirects) face aux conseils municipaux ?</li>
+<li>Comment les <strong>compétences transférées</strong> redessinent-elles les responsabilités locales ?</li>
+</ol>
+</div>
+</section>
+
+<!-- ============================================ -->
+<!-- PROBLEMATIQUE FIL ROUGE                       -->
+<!-- ============================================ -->
+<section class="dataset" id="problematique" style="border-top-color:#6a4c93">
+<h2>🎯 Problématique fil rouge proposée pour la roadmap</h2>
+
+<p>Au lieu d'enchaîner des exercices isolés, propose-toi <strong>une problématique unique qui traverse les 8 séances</strong>. Cela donne du sens à chaque manipulation et prépare un mémoire ou un rapport de stage cohérent.</p>
+
+<div class="quest">
+<h4>Exemple de problématique de mémoire</h4>
+<p style="font-size:1.1em;font-weight:600;color:#0f2c4a;">
+« Diagnostic territorial de Toulouse Métropole : comment l'occupation du sol, l'accès aux équipements et la dynamique démographique éclairent-ils les inégalités socio-spatiales infra-métropolitaines à l'heure du Zéro Artificialisation Nette ? »
+</p>
+
+<h4>Cheminement scientifique aligné sur la roadmap</h4>
+<table>
+<tr><th>Séance</th><th>Question scientifique posée</th><th>Donnée mobilisée</th></tr>
+<tr><td>S1</td><td>Quels sont les enjeux du SIG dans la production de connaissances géographiques ?</td><td>Aucune — réflexion</td></tr>
+<tr><td>S2</td><td>Comment cartographier le périmètre administratif de la métropole ?</td><td>Admin Express</td></tr>
+<tr><td>S3</td><td>Comment représenter visuellement les contrastes démographiques entre communes ?</td><td>Admin Express + INSEE Pop</td></tr>
+<tr><td>S4</td><td>Où se concentrent ou se font rares les médecins / écoles / commerces dans le 31 ?</td><td>+ BPE</td></tr>
+<tr><td>S5</td><td>L'accessibilité aux transports en commun est-elle homogène à Toulouse ?</td><td>+ OSM</td></tr>
+<tr><td>S6</td><td>Quels quartiers (IRIS) sont les plus artificialisés et quelles inégalités cela révèle-t-il ?</td><td>+ Contours IRIS + OCS GE</td></tr>
+<tr><td>S7</td><td>La topographie influence-t-elle la distribution du bâti et la vulnérabilité aux inondations ?</td><td>+ BD ALTI</td></tr>
+<tr><td>S8</td><td>Synthèse cartographique d'un diagnostic territorial complet — atlas Toulouse Métropole</td><td>Tout + EPCI BANATIC</td></tr>
+</table>
+
+<p style="margin-top:18px;"><strong>Résultat final :</strong> un atlas de diagnostic territorial complet (37 planches, une par commune), publiable, citable, scientifiquement défendable.</p>
+</div>
+</section>
+
+<!-- ============================================ -->
+<!-- POURQUOI CONTINUER                            -->
+<!-- ============================================ -->
+<section class="why-continue" id="continuer">
+<h2>🚀 Pourquoi continuer après la séance 8 ?</h2>
+
+<p>Si tu vas au bout de cette roadmap, tu auras acquis bien plus qu'une compétence logicielle. Tu auras compris <strong>comment la donnée géographique est produite, ce qu'elle dit et ce qu'elle tait, comment la croiser pour produire un raisonnement</strong>.</p>
+
+<h3 style="color:#fff;">Ce que tu sauras faire à la fin</h3>
+<ul>
+<li>Évaluer la pertinence d'une donnée pour une question scientifique</li>
+<li>Produire une chaîne de traitement reproductible (téléchargement → filtrage → analyse → carte)</li>
+<li>Justifier tes choix méthodologiques face à un jury</li>
+<li>Comparer plusieurs sources de données et expliciter leurs apports respectifs</li>
+<li>Mobiliser le vocabulaire technique (CRS, géopackage, jointure spatiale, statistique zonale)</li>
+</ul>
+
+<h3 style="color:#fff;">Ce que tu pourras viser après</h3>
+<ul>
+<li><strong>Stage en bureau d'études / agence d'urbanisme</strong> — niveau opérationnel L3 / M1</li>
+<li><strong>Sujet de mémoire de M1</strong> — méthodologie SIG défendable</li>
+<li><strong>Mission ponctuelle en collectivité</strong> — diagnostic territorial, fiches communales</li>
+<li><strong>Suite Tome 2</strong> — analyse spatiale avancée, PostGIS, PyQGIS, télédétection</li>
+<li><strong>Mode contributeur</strong> — partager tes propres exercices, devenir co-auteur</li>
+</ul>
+
+<h3 style="color:#fff;">L'envie de poursuivre</h3>
+<p style="font-size:1.05em;line-height:1.7;">
+La cartographie n'est pas un domaine technique aride. C'est <strong>un art de raconter le territoire</strong>. Chaque carte est un argument, chaque choix de seuil est une décision politique implicite, chaque palette de couleurs oriente la lecture.
+<br><br>
+À la fin de cette roadmap, tu maîtriseras les bases de cet art. Mais tu auras surtout compris que <strong>tu peux toujours aller plus loin</strong> : nouvelles données, nouveaux territoires, nouveaux questionnements.
+<br><br>
+<em>Le but n'est pas de terminer la roadmap. Le but est qu'elle te donne envie de ne plus jamais t'arrêter.</em>
+</p>
+</section>
+
+</div>
+
+<footer>
+Bibliothèque de données académique · Roadmap QGIS · Mamadou SOW · 30 juin 2026 · CC BY-SA 4.0
+</footer>
+
+</body>
+</html>

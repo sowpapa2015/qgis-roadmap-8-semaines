@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Préparation avant chaque séance — Roadmap QGIS 8 semaines</title>
+<meta name="description" content="Pour chaque séance, télécharge en 1 clic les données nécessaires (version pré-filtrée légère) ou suis le lien officiel.">
+<style>
+  body{font-family:-apple-system,Segoe UI,sans-serif;margin:0;padding:0;background:#f7f5f1;color:#1a2533;line-height:1.65}
+  header{background:linear-gradient(135deg,#0f2c4a,#1B6E6E);color:#fff;padding:40px 30px;text-align:center}
+  header h1{margin:0 0 8px;font-size:2em}
+  header p{margin:0;opacity:0.92;font-size:1.05em}
+  .container{max-width:1100px;margin:0 auto;padding:30px}
+  .intro{background:#fff;border:1px solid #e1e6eb;border-radius:8px;padding:20px 26px;margin-bottom:25px;box-shadow:0 1px 3px rgba(0,0,0,0.04)}
+  .nav-seances{display:flex;flex-wrap:wrap;gap:8px;margin:20px 0;justify-content:center}
+  .nav-seances a{background:#0f2c4a;color:#fff;padding:8px 16px;border-radius:20px;text-decoration:none;font-size:0.9em;font-weight:600;transition:background 0.2s}
+  .nav-seances a:hover{background:#1B6E6E}
+  .seance{background:#fff;border-radius:10px;padding:25px 30px;margin:25px 0;box-shadow:0 2px 8px rgba(0,0,0,0.06);border-top:5px solid #1B6E6E;scroll-margin-top:20px}
+  .seance.s1{border-top-color:#2e7d32}
+  .seance.s2{border-top-color:#1B6E6E}
+  .seance.s3{border-top-color:#6a4c93}
+  .seance.s4{border-top-color:#d4a017}
+  .seance.s5{border-top-color:#0f2c4a}
+  .seance.s6{border-top-color:#e63946}
+  .seance.s7{border-top-color:#1976d2}
+  .seance.s8{border-top-color:#b26a00}
+  .seance h2{color:#0f2c4a;margin-top:0;font-size:1.5em;display:flex;align-items:center;gap:12px}
+  .seance .num{display:inline-block;width:42px;height:42px;border-radius:50%;background:#0f2c4a;color:#fff;text-align:center;line-height:42px;font-weight:700}
+  .seance .duree{font-size:0.85em;color:#5a6677;font-weight:normal;margin-left:auto}
+  .objectif{background:#f0f7f0;border-left:4px solid #2e7d32;padding:12px 18px;margin:15px 0;border-radius:4px}
+  .objectif strong{color:#2e7d32}
+  .data-block{background:#fefcf7;border:2px solid #f0e6c4;border-radius:8px;padding:18px 22px;margin:15px 0}
+  .data-block h3{margin-top:0;color:#b26a00;font-size:1.05em}
+  .data-item{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;background:#fff;padding:12px 16px;border-radius:6px;margin:8px 0;border:1px solid #e1e6eb}
+  .data-item-info{flex:1;min-width:300px}
+  .data-item-name{font-weight:600;color:#0f2c4a;font-size:1em}
+  .data-item-meta{font-size:0.82em;color:#5a6677;margin-top:3px}
+  .btn-dl{background:#2e7d32;color:#fff;padding:8px 18px;border-radius:5px;text-decoration:none;font-weight:600;font-size:0.9em;transition:background 0.2s}
+  .btn-dl:hover{background:#1b5e20}
+  .btn-dl.officiel{background:#1976d2}
+  .btn-dl.officiel:hover{background:#0d47a1}
+  .btn-dl.plugin{background:#6a4c93}
+  .btn-dl.plugin:hover{background:#4a148c}
+  .btn-dl.bientot{background:#bdbdbd;color:#fff;cursor:not-allowed}
+  .alt{font-size:0.85em;color:#5a6677;margin-top:8px;padding-top:8px;border-top:1px dashed #e1e6eb}
+  .alt a{color:#1976d2}
+  .checklist{background:#e3f2fd;border-left:4px solid #1976d2;padding:14px 20px;margin:12px 0;border-radius:4px;font-size:0.93em}
+  .checklist h4{margin:0 0 6px;color:#0d47a1;font-size:0.95em}
+  .checklist ul{margin:6px 0;padding-left:22px}
+  .nothing{background:#f5f5f5;color:#666;text-align:center;padding:14px;border-radius:6px;font-style:italic;font-size:0.92em}
+  .summary-table{width:100%;border-collapse:collapse;margin:18px 0}
+  .summary-table th{background:#0f2c4a;color:#fff;padding:8px 12px;text-align:left;font-size:0.88em}
+  .summary-table td{border:1px solid #e1e6eb;padding:8px 12px;font-size:0.92em}
+  .summary-table tr:nth-child(even){background:#f7f5f1}
+  footer{text-align:center;padding:25px;color:#5a6677;font-size:0.85em;background:#fff;border-top:1px solid #e1e6eb}
+  .badge-statut{display:inline-block;padding:2px 8px;border-radius:10px;font-size:0.7em;font-weight:600;margin-left:6px}
+  .badge-ok{background:#c8e6c9;color:#1b5e20}
+  .badge-prod{background:#fff8e7;color:#b26a00}
+  .legend{display:flex;flex-wrap:wrap;gap:10px;margin:15px 0;justify-content:center;font-size:0.85em}
+  .legend > span{background:#fff;padding:5px 12px;border-radius:6px;border:1px solid #e1e6eb}
+</style>
+</head>
+<body>
+
+<header>
+  <h1>📋 Préparation avant chaque séance</h1>
+  <p>Tout ce que tu dois télécharger avant de commencer — en 1 clic ou via le portail officiel</p>
+</header>
+
+<div class="container">
+
+<div class="intro">
+<p><strong>Comment utiliser cette page :</strong> avant de commencer une séance, viens ici, télécharge ce qui est listé pour cette séance, ranges les fichiers dans <code>C:\QGIS_TOULOUSE\DATA\</code>, et tu es prête à démarrer. Tu peux choisir entre :</p>
+<ul>
+<li><strong>📥 Téléchargement direct</strong> (vert) — fichier pré-filtré léger, hébergé sur ce dépôt</li>
+<li><strong>🔗 Lien officiel</strong> (bleu) — source d'origine IGN/INSEE, version complète</li>
+<li><strong>🔌 Plugin live</strong> (violet) — récupération à la volée via plugin QGIS</li>
+</ul>
+
+<div class="legend">
+<span><span class="badge-statut badge-ok">disponible</span> fichier prêt sur le dépôt</span>
+<span><span class="badge-statut badge-prod">en production</span> bientôt disponible</span>
+</div>
+</div>
+
+<!-- DATA PACK COMPLET -->
+<div style="background:linear-gradient(135deg,#0f2c4a,#1B6E6E);color:#fff;border-radius:12px;padding:30px 35px;margin:25px 0;text-align:center;box-shadow:0 4px 16px rgba(0,0,0,0.1);">
+<h2 style="margin:0 0 10px;color:#fff;font-size:1.5em;">📦 Data Pack complet (recommandé)</h2>
+<p style="margin:0 0 18px;opacity:0.95;font-size:1.05em;">
+8 fichiers pré-filtrés sur Toulouse / Haute-Garonne, prêts à l'emploi.<br>
+<strong>11,65 Mo</strong> à télécharger une seule fois — couvre toutes les séances S2 à S8.
+</p>
+<a href="https://github.com/sowpapa2015/qgis-roadmap-8-semaines/releases/download/data-v1.0/qgis_toulouse_pack_v1.0.zip"
+   style="display:inline-block;background:#d4a017;color:#0f2c4a;padding:14px 30px;border-radius:8px;text-decoration:none;font-weight:700;font-size:1.05em;margin:5px;">
+📥 Télécharger qgis_toulouse_pack_v1.0.zip (11,65 Mo)
+</a>
+<a href="https://github.com/sowpapa2015/qgis-roadmap-8-semaines/releases/tag/data-v1.0"
+   style="display:inline-block;background:rgba(255,255,255,0.18);color:#fff;padding:14px 24px;border-radius:8px;text-decoration:none;font-weight:600;font-size:0.95em;margin:5px;">
+🔗 Voir la Release GitHub
+</a>
+<p style="margin:18px 0 0;font-size:0.85em;opacity:0.85;">
+Contenu : Admin Express, Toulouse Métropole, IRIS, BPE, OCS GE, MNT relief.<br>
+SHA-256 : <code style="background:rgba(255,255,255,0.15);padding:2px 6px;border-radius:3px;color:#fff;font-size:0.85em;">57bfdbe50ef0c57d459363aaa0356364f27a0861be382a0a0a5c8f6689ff9397</code>
+</p>
+</div>
+
+<div class="intro" style="border-left-color:#d4a017;">
+<p><strong>💡 Conseil :</strong> télécharge le data pack ci-dessus une fois pour toutes, décompresse-le dans <code>C:\QGIS_TOULOUSE\DATA\</code>. Tu n'auras plus à revenir sur cette page pour chercher chaque fichier individuellement. Les liens unitaires ci-dessous restent dispos comme alternative ou pour les sources officielles complètes.</p>
+</div>
+
+<!-- NAVIGATION -->
+<nav class="nav-seances">
+  <a href="#s1">S1</a><a href="#s2">S2</a><a href="#s3">S3</a><a href="#s4">S4</a>
+  <a href="#s5">S5</a><a href="#s6">S6</a><a href="#s7">S7</a><a href="#s8">S8</a>
+  <a href="#vue">Vue d'ensemble</a>
+</nav>
+
+<!-- SEANCE 1 -->
+<section class="seance s1" id="s1">
+<h2><span class="num">1</span> Découverte<span class="duree">~ 5 h · niveau débutant</span></h2>
+
+<div class="objectif">
+<strong>🎯 Objectif :</strong> installer QGIS LTR, comprendre l'interface, configurer le CRS Lambert-93, ajouter un fond OSM, mesurer une distance.
+</div>
+
+<div class="data-block">
+<h3>📦 Avant de démarrer</h3>
+
+<div class="data-item">
+<div class="data-item-info">
+<div class="data-item-name">QGIS LTR (logiciel)</div>
+<div class="data-item-meta">~700 Mo · installeur Windows · une seule fois</div>
+</div>
+<a class="btn-dl officiel" href="https://qgis.org/fr/site/forusers/download.html" target="_blank" rel="noopener">🔗 Télécharger QGIS</a>
+</div>
+
+<div class="nothing">Aucune donnée géographique nécessaire pour cette séance — juste le logiciel.</div>
+</div>
+
+<div class="checklist">
+<h4>Checklist avant la séance</h4>
+<ul>
+<li>QGIS LTR installé</li>
+<li>Lancé en français (Settings → Options → Locale → Français)</li>
+<li>Dossier de travail créé : <code>C:\QGIS_TOULOUSE\S1\</code></li>
+</ul>
+</div>
+</section>
+
+<!-- SEANCE 2 -->
+<section class="seance s2" id="s2">
+<h2><span class="num">2</span> Vecteurs & attributs<span class="duree">~ 6 h</span></h2>
+
+<div class="objectif">
+<strong>🎯 Objectif :</strong> charger une couche vecteur, filtrer les communes du dpt 31, lire et manipuler la table attributaire, calculer la surface en hectares.
+</div>
+
+<div class="data-block">
+<h3>📦 Données à télécharger</h3>
+
+<div class="data-item">
+<div class="data-item-info">
+<div class="data-item-name">communes_31.gpkg — Communes Haute-Garonne <span class="badge-statut badge-prod">en production</span></div>
+<div class="data-item-meta">~3 Mo · 586 communes filtrées · GeoPackage · CRS Lambert-93 · prête à l'emploi</div>
+</div>
+<a class="btn-dl bientot" href="#" onclick="return false">📥 Disponible bientôt</a>
+</div>
+<p class="alt">📌 <strong>En attendant</strong> — Source officielle complète (à filtrer toi-même sur dpt 31) :<br>
+👉 <a href="https://geoservices.ign.fr/adminexpress" target="_blank" rel="noopener">Admin Express COG (IGN — ~400 Mo)</a>
+</p>
+</div>
+
+<div class="checklist">
+<h4>Checklist avant la séance</h4>
+<ul>
+<li>S1 validée (QGIS opérationnel, CRS Lambert-93 configuré)</li>
+<li><code>communes_31.gpkg</code> dans <code>C:\QGIS_TOULOUSE\DATA\</code> OU Admin Express téléchargé</li>
+<li>Dossier <code>C:\QGIS_TOULOUSE\S2\</code> créé</li>
+</ul>
+</div>
+</section>
+
+<!-- SEANCE 3 -->
+<section class="seance s3" id="s3">
+<h2><span class="num">3</span> Sémiologie cartographique<span class="duree">~ 6 h · séance graphiste</span></h2>
+
+<div class="objectif">
+<strong>🎯 Objectif :</strong> maîtriser les 4 modes de symbologie (unique, catégorisé, gradué, règles), choisir une palette ColorBrewer, étiqueter intelligemment.
+</div>
+
+<div class="data-block">
+<h3>📦 Données à télécharger</h3>
+
+<div class="data-item">
+<div class="data-item-info">
+<div class="data-item-name">communes_31.gpkg <em>(déjà téléchargé en S2)</em></div>
+<div class="data-item-meta">à réutiliser</div>
+</div>
+<span>—</span>
+</div>
+
+<div class="data-item">
+<div class="data-item-info">
+<div class="data-item-name">insee_pop_31.csv — Population des communes Haute-Garonne <span class="badge-statut badge-prod">en production</span></div>
+<div class="data-item-meta">~0,1 Mo · population municipale par commune · prête à joindre</div>
+</div>
+<a class="btn-dl bientot" href="#" onclick="return false">📥 Disponible bientôt</a>
+</div>
+<p class="alt">📌 <strong>Source officielle complète</strong> (CSV France entière à filtrer dpt 31) :<br>
+👉 <a href="https://www.insee.fr/fr/statistiques/serie/000436391" target="_blank" rel="noopener">INSEE — Populations légales</a> ·
+👉 <a href="https://www.data.gouv.fr/fr/datasets/populations-legales-communales-et-departementales/" target="_blank" rel="noopener">data.gouv.fr (alternatif)</a>
+</p>
+</div>
+
+<div class="checklist">
+<h4>Checklist avant la séance</h4>
+<ul>
+<li>communes_31.gpkg disponible</li>
+<li>insee_pop_31.csv téléchargé (ou CSV France à filtrer)</li>
+<li>Dossier <code>C:\QGIS_TOULOUSE\S3\</code> créé</li>
+</ul>
+</div>
+</section>
+
+<!-- SEANCE 4 -->
+<section class="seance s4" id="s4">
+<h2><span class="num">4</span> Requêtes & jointures<span class="duree">~ 6 h</span></h2>
+
+<div class="objectif">
+<strong>🎯 Objectif :</strong> sélection par expression, sélection par localisation, jointure CSV externe à une couche, produire une carte « communes sans médecin ».
+</div>
+
+<div class="data-block">
+<h3>📦 Données à télécharger</h3>
+
+<div class="data-item">
+<div class="data-item-info">
+<div class="data-item-name">communes_31.gpkg <em>(déjà téléchargé)</em></div>
+<div class="data-item-meta">à réutiliser</div>
+</div>
+<span>—</span>
+</div>
+
+<div class="data-item">
+<div class="data-item-info">
+<div class="data-item-name">bpe_haute_garonne.csv — Équipements Haute-Garonne <span class="badge-statut badge-prod">en production</span></div>
+<div class="data-item-meta">~3 Mo · santé + enseignement + commerces du dpt 31 · prête à joindre</div>
+</div>
+<a class="btn-dl bientot" href="#" onclick="return false">📥 Disponible bientôt</a>
+</div>
+
+<div class="data-item">
+<div class="data-item-info">
+<div class="data-item-name">bpe_toulouse.csv — Équipements Toulouse seule <span class="badge-statut badge-prod">en production</span></div>
+<div class="data-item-meta">~1 Mo · variante plus légère si ton PC rame</div>
+</div>
+<a class="btn-dl bientot" href="#" onclick="return false">📥 Disponible bientôt</a>
+</div>
+
+<p class="alt">📌 <strong>Source officielle complète</strong> (BPE France entière à filtrer toi-même, ~150 Mo) :<br>
+👉 <a href="https://www.insee.fr/fr/statistiques/3568638" target="_blank" rel="noopener">INSEE — Base permanente des équipements</a><br>
+Si tu télécharges la BPE complète : utiliser le script <code>filtrer_bpe_31.py</code> fourni pour produire bpe_haute_garonne.csv et bpe_toulouse.csv localement.
+</p>
+</div>
+
+<div class="checklist">
+<h4>Checklist avant la séance</h4>
+<ul>
+<li>communes_31.gpkg disponible</li>
+<li>bpe_toulouse.csv OU bpe_haute_garonne.csv téléchargé</li>
+<li>Dossier <code>C:\QGIS_TOULOUSE\S4\</code> créé</li>
+</ul>
+</div>
+</section>
+
+<!-- SEANCE 5 -->
+<section class="seance s5" id="s5">
+<h2><span class="num">5</span> Géotraitements & OSM<span class="duree">~ 6 h</span></h2>
+
+<div class="objectif">
+<strong>🎯 Objectif :</strong> installer plugin QuickOSM, extraire les arrêts de transport de Toulouse, maîtriser buffer / clip / différence / union / dissoudre, produire carte d'accessibilité.
+</div>
+
+<div class="data-block">
+<h3>📦 Données à télécharger</h3>
+
+<div class="data-item">
+<div class="data-item-info">
+<div class="data-item-name">Plugin QuickOSM (à installer dans QGIS)</div>
+<div class="data-item-meta">Extensions → Installer/gérer → recherche « QuickOSM » → Installer</div>
+</div>
+<a class="btn-dl plugin" href="https://plugins.qgis.org/plugins/QuickOSM/" target="_blank" rel="noopener">🔌 Page plugin</a>
+</div>
+
+<div class="data-item">
+<div class="data-item-info">
+<div class="data-item-name">toulouse_commune.gpkg — Toulouse seule (commune INSEE 31555) <span class="badge-statut badge-prod">en production</span></div>
+<div class="data-item-meta">~0,1 Mo · une seule entité polygone Toulouse</div>
+</div>
+<a class="btn-dl bientot" href="#" onclick="return false">📥 Disponible bientôt</a>
+</div>
+
+<div class="data-item">
+<div class="data-item-info">
+<div class="data-item-name">osm_toulouse_transports.gpkg — Arrêts de transport Toulouse (backup) <span class="badge-statut badge-prod">en production</span></div>
+<div class="data-item-meta">~2 Mo · backup si QuickOSM est down ou trop lent ce jour-là</div>
+</div>
+<a class="btn-dl bientot" href="#" onclick="return false">📥 Disponible bientôt</a>
+</div>
+
+<p class="alt">📌 <strong>Source OSM</strong> : généralement récupérée en direct par QuickOSM. Le backup est uniquement de secours.<br>
+👉 <a href="https://www.openstreetmap.org/" target="_blank" rel="noopener">openstreetmap.org</a>
+</p>
+</div>
+
+<div class="checklist">
+<h4>Checklist avant la séance</h4>
+<ul>
+<li>Plugin QuickOSM installé dans QGIS</li>
+<li>toulouse_commune.gpkg téléchargé</li>
+<li>Connexion internet active (pour QuickOSM live)</li>
+<li>Dossier <code>C:\QGIS_TOULOUSE\S5\</code> créé</li>
+</ul>
+</div>
+</section>
+
+<!-- SEANCE 6 -->
+<section class="seance s6" id="s6">
+<h2><span class="num">6</span> Analyses d'aménagement<span class="duree">~ 6 h</span></h2>
+
+<div class="objectif">
+<strong>🎯 Objectif :</strong> charger OCS GE, travailler à l'échelle IRIS, calculer le taux d'artificialisation par IRIS, produire une carte choroplèthe de densité bâtie.
+</div>
+
+<div class="data-block">
+<h3>📦 Données à télécharger</h3>
+
+<div class="data-item">
+<div class="data-item-info">
+<div class="data-item-name">iris_toulouse.gpkg — IRIS de Toulouse (117 IRIS) <span class="badge-statut badge-prod">en production</span></div>
+<div class="data-item-meta">~1 Mo · découpage infra-communal Toulouse · prêt à l'emploi</div>
+</div>
+<a class="btn-dl bientot" href="#" onclick="return false">📥 Disponible bientôt</a>
+</div>
+
+<div class="data-item">
+<div class="data-item-info">
+<div class="data-item-name">ocsge_toulouse.gpkg — OCS GE clip Toulouse <span class="badge-statut badge-prod">en production</span></div>
+<div class="data-item-meta">~8 Mo · occupation du sol Toulouse uniquement · prêt à filtrer artif</div>
+</div>
+<a class="btn-dl bientot" href="#" onclick="return false">📥 Disponible bientôt</a>
+</div>
+
+<p class="alt">📌 <strong>Sources officielles complètes</strong> (lourdes — à utiliser uniquement si tu veux travailler sur un autre territoire) :<br>
+👉 <a href="https://geoservices.ign.fr/contoursiris" target="_blank" rel="noopener">ContoursIRIS — IGN (~50 Mo)</a><br>
+👉 <a href="https://geoservices.ign.fr/ocsge" target="_blank" rel="noopener">OCS GE Haute-Garonne — IGN (~200 Mo)</a>
+</p>
+</div>
+
+<div class="checklist">
+<h4>Checklist avant la séance</h4>
+<ul>
+<li>iris_toulouse.gpkg téléchargé</li>
+<li>ocsge_toulouse.gpkg téléchargé</li>
+<li>S2 et S3 validées (table attributaire et symbologie maîtrisées)</li>
+<li>Dossier <code>C:\QGIS_TOULOUSE\S6\</code> créé</li>
+</ul>
+</div>
+</section>
+
+<!-- SEANCE 7 -->
+<section class="seance s7" id="s7">
+<h2><span class="num">7</span> Raster & relief<span class="duree">~ 6 h</span></h2>
+
+<div class="objectif">
+<strong>🎯 Objectif :</strong> charger un MNT, appliquer une pseudo-couleur, générer un ombrage, tracer un profil altimétrique, identifier les zones basses inondables potentielles.
+</div>
+
+<div class="data-block">
+<h3>📦 Données à télécharger</h3>
+
+<div class="data-item">
+<div class="data-item-info">
+<div class="data-item-name">mnt_toulouse_25m.tif — MNT BD ALTI clip Toulouse <span class="badge-statut badge-prod">en production</span></div>
+<div class="data-item-meta">~5 Mo · modèle d'altitude 25 m centré Toulouse · prêt à pseudo-couleur</div>
+</div>
+<a class="btn-dl bientot" href="#" onclick="return false">📥 Disponible bientôt</a>
+</div>
+
+<div class="data-item">
+<div class="data-item-info">
+<div class="data-item-name">Plugin Profile Tool (à installer dans QGIS)</div>
+<div class="data-item-meta">Extensions → Installer/gérer → recherche « Profile Tool »</div>
+</div>
+<a class="btn-dl plugin" href="https://plugins.qgis.org/plugins/profiletool/" target="_blank" rel="noopener">🔌 Page plugin</a>
+</div>
+
+<p class="alt">📌 <strong>Sources officielles</strong> (lourdes — pour profil Toulouse → Pyrénées) :<br>
+👉 <a href="https://geoservices.ign.fr/bdalti" target="_blank" rel="noopener">BD ALTI 25 m dpt 31 — IGN (~50 Mo)</a> — alternative légère<br>
+👉 <a href="https://geoservices.ign.fr/rgealti" target="_blank" rel="noopener">RGE ALTI 5 m dpt 31 — IGN (~1,5 Go)</a> — haute résolution
+</p>
+</div>
+
+<div class="checklist">
+<h4>Checklist avant la séance</h4>
+<ul>
+<li>mnt_toulouse_25m.tif téléchargé OU BD ALTI 25 m dpt 31</li>
+<li>Plugin Profile Tool installé</li>
+<li>Dossier <code>C:\QGIS_TOULOUSE\S7\</code> créé</li>
+</ul>
+</div>
+</section>
+
+<!-- SEANCE 8 -->
+<section class="seance s8" id="s8">
+<h2><span class="num">8</span> Mise en page A3 + Atlas<span class="duree">~ 7 h · finale</span></h2>
+
+<div class="objectif">
+<strong>🎯 Objectif :</strong> maîtriser le composeur de mise en page, produire une planche A3 complète, exporter en PDF 300 dpi, générer automatiquement N planches via l'Atlas (37 communes Toulouse Métropole).
+</div>
+
+<div class="data-block">
+<h3>📦 Données à télécharger</h3>
+
+<div class="data-item">
+<div class="data-item-info">
+<div class="data-item-name">communes_toulouse_metropole.gpkg — 37 communes Toulouse Métropole <span class="badge-statut badge-prod">en production</span></div>
+<div class="data-item-meta">~0,5 Mo · couche de couverture pour l'Atlas · prête à l'emploi</div>
+</div>
+<a class="btn-dl bientot" href="#" onclick="return false">📥 Disponible bientôt</a>
+</div>
+
+<div class="data-item">
+<div class="data-item-info">
+<div class="data-item-name">Recyclage de S3 + S6 + S7</div>
+<div class="data-item-meta">Population, IRIS Toulouse, MNT — déjà téléchargés</div>
+</div>
+<span>—</span>
+</div>
+
+<p class="alt">📌 <strong>Source officielle</strong> Toulouse Métropole — liste des 37 communes (utile si tu veux refaire le filtre toi-même) :<br>
+👉 <a href="https://www.banatic.interieur.gouv.fr/" target="_blank" rel="noopener">BANATIC — Annuaire EPCI (Ministère Intérieur)</a>
+</p>
+</div>
+
+<div class="checklist">
+<h4>Checklist avant la séance</h4>
+<ul>
+<li>communes_toulouse_metropole.gpkg téléchargé</li>
+<li>Toutes les couches des séances S3, S6, S7 disponibles</li>
+<li>S2 à S7 validées (toute la chaîne maîtrisée)</li>
+<li>Dossier <code>C:\QGIS_TOULOUSE\S8\</code> créé</li>
+<li>2-3 h de marge prévues pour la production finale</li>
+</ul>
+</div>
+</section>
+
+<!-- VUE D'ENSEMBLE -->
+<section class="seance" id="vue" style="border-top-color:#0f2c4a">
+<h2><span class="num">∑</span> Vue d'ensemble : tous les datasets en un coup d'œil</h2>
+
+<table class="summary-table">
+<tr><th>Séance</th><th>Datasets requis</th><th>Volume cumulé</th><th>Statut</th></tr>
+<tr><td>S1</td><td>—</td><td>—</td><td>Aucun</td></tr>
+<tr><td>S2</td><td>communes_31.gpkg</td><td>3 Mo</td><td><span class="badge-statut badge-prod">en production</span></td></tr>
+<tr><td>S3</td><td>+ insee_pop_31.csv</td><td>3,1 Mo cumulé</td><td><span class="badge-statut badge-prod">en production</span></td></tr>
+<tr><td>S4</td><td>+ bpe_toulouse.csv ou bpe_31.csv</td><td>4-6 Mo cumulé</td><td><span class="badge-statut badge-prod">en production</span></td></tr>
+<tr><td>S5</td><td>+ toulouse_commune.gpkg + plugin QuickOSM</td><td>~6 Mo cumulé</td><td><span class="badge-statut badge-prod">en production</span></td></tr>
+<tr><td>S6</td><td>+ iris_toulouse.gpkg + ocsge_toulouse.gpkg</td><td>~15 Mo cumulé</td><td><span class="badge-statut badge-prod">en production</span></td></tr>
+<tr><td>S7</td><td>+ mnt_toulouse_25m.tif + plugin Profile Tool</td><td>~20 Mo cumulé</td><td><span class="badge-statut badge-prod">en production</span></td></tr>
+<tr><td>S8</td><td>+ communes_toulouse_metropole.gpkg</td><td>~21 Mo cumulé</td><td><span class="badge-statut badge-prod">en production</span></td></tr>
+<tr><td><strong>Total fin parcours</strong></td><td><strong>9 fichiers + 2 plugins</strong></td><td><strong>~21 Mo</strong></td><td>—</td></tr>
+</table>
+
+<div class="objectif">
+<strong>💡 Comparaison :</strong> si tu téléchargeais toutes les sources officielles brutes (Admin Express + INSEE BPE + OCS GE + RGE ALTI + IRIS + BD ALTI), tu téléchargerais <strong>~2,3 Go</strong>. Avec le data pack léger : <strong>~21 Mo</strong>. Soit <strong>×100 plus rapide</strong> à démarrer.
+</div>
+</section>
+
+<!-- ETAT DE PRODUCTION -->
+<section class="seance">
+<h2><span class="num">⚙️</span> État de production du data pack</h2>
+
+<p>Le data pack est produit par lots. Cette page sera mise à jour au fur et à mesure que les fichiers deviennent disponibles.</p>
+
+<table class="summary-table">
+<tr><th>Lot</th><th>Fichiers</th><th>Statut</th><th>Quand</th></tr>
+<tr><td>Lot 1 (P0)</td><td>communes_31, communes_toulouse_metropole, toulouse_commune, insee_pop_31, bpe_toulouse, bpe_haute_garonne</td><td>🟡 en production</td><td>cette semaine</td></tr>
+<tr><td>Lot 2 (P1)</td><td>iris_toulouse, ocsge_toulouse, mnt_toulouse_25m</td><td>⏳ planifié</td><td>semaine prochaine</td></tr>
+<tr><td>Lot 3 (P2)</td><td>osm_toulouse_transports, medecins_31_fictif, README_DATA</td><td>⏳ planifié</td><td>S+2</td></tr>
+<tr><td>Release officielle</td><td>data-v1.0.zip (tout le pack)</td><td>⏳ planifié</td><td>S+2</td></tr>
+</table>
+</section>
+
+<!-- SOS -->
+<section class="seance">
+<h2><span class="num">🆘</span> Si tu bloques</h2>
+
+<ul>
+<li><a href="https://github.com/sowpapa2015/qgis-roadmap-8-semaines/discussions" target="_blank" rel="noopener">Poser une question dans les Discussions GitHub</a></li>
+<li><a href="https://github.com/sowpapa2015/qgis-roadmap-8-semaines/issues" target="_blank" rel="noopener">Ouvrir une issue (bug, erreur, lien cassé)</a></li>
+<li><a href="https://www.linkedin.com/in/sow-papa-mamadou/" target="_blank" rel="noopener">Contacter Mamadou via LinkedIn</a></li>
+</ul>
+
+<p>Bug fréquent : jointure CSV qui ne fonctionne pas → consulter le <a href="debug-jointures.html">guide de debug jointures</a> (à venir).</p>
+</section>
+
+</div>
+
+<footer>
+Page « Préparation avant chaque séance » · Roadmap QGIS 8 semaines · Mamadou SOW · 2026 · CC BY-SA 4.0
+</footer>
+
+</body>
+</html>
